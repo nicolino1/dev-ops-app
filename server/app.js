@@ -8,7 +8,7 @@ const app = express();
     const db = mongoose.connect('mongodb://localhost/botapi_Test');
 } else {
     console.log('Prod');*/
-const db = mongoose.connect('mongodb://localhost/botapi', { useNewUrlParser: true });
+const db = mongoose.connect('mongodb://localhost/27017', { useNewUrlParser: true });
 //}
 
 const port = process.env.PORT || 4000;
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use('/api', bookRouter);
 
 app.get('/', (req, res) => {
-    res.send('alla le hacen request');
+    res.send('api working :)');
 });
 
 app.server = app.listen(port, () => {
