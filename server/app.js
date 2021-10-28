@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require("cors");
 const app = express();
 
 /*if (process.env.ENV === 'Test') {
@@ -19,6 +20,7 @@ const bookRouter = require('./routes/bookRouter')(Book);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/api', bookRouter);
 
