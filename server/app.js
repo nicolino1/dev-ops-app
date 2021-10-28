@@ -9,7 +9,7 @@ const app = express();
     const db = mongoose.connect('mongodb://localhost/botapi_Test');
 } else {
     console.log('Prod');*/
-const db = mongoose.connect('mongodb://mongo-db/devops', { useNewUrlParser: true });
+const db = mongoose.connect('mongodb://localhost/devops', { useNewUrlParser: true });
 //}
 
 const port = process.env.PORT || 4000;
