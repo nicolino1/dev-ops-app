@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require("cors");
 const app = express();
 
 /*if (process.env.ENV === 'Test') {
@@ -8,7 +9,7 @@ const app = express();
     const db = mongoose.connect('mongodb://localhost/botapi_Test');
 } else {
     console.log('Prod');*/
-const db = mongoose.connect('mongodb://localhost/botapi', { useNewUrlParser: true });
+const db = mongoose.connect('mongodb://mongo-db/devops', { useNewUrlParser: true });
 //}
 
 const port = process.env.PORT || 4000;
@@ -19,11 +20,12 @@ const bookRouter = require('./routes/bookRouter')(Book);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/api', bookRouter);
 
 app.get('/', (req, res) => {
-    res.send('alla le hacen request');
+    res.send('api working :)');
 });
 
 app.server = app.listen(port, () => {
