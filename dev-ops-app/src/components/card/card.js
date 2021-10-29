@@ -1,9 +1,13 @@
 import React from 'react';
 import './card.scss';
+import Axios from 'axios';
+import UpdateForm from '../updateForm/updateForm';
 
 const Card = (props) => {
-    const  {title, author, genre} = props;
-
+    const  {id, title, author, genre, read} = props;
+    const url = "http://localhost:4000/api/books/" + id;
+    const bookRead = (read) => 
+        ((read) ? <><span style={{color:'green'}}>read</span></> : <><span style={{color:'red'}}>read</span></>);
     return (
         <div className="card">
             <img 
@@ -13,7 +17,22 @@ const Card = (props) => {
                 <h4>{title}</h4>
                 <p>{author}</p>
                 <p>{genre}</p>
+                {bookRead(read)}
             </div>
+            {/* <button onClick= {
+                <UpdateForm {...props} />
+            }> Update fields </button> */}
+            <button onClick={
+                () => {
+                    let readBook = (read) ? false : true;
+                    Axios.patch(url, { read: readBook})
+                }
+            }>Update read</button>
+            <button onClick={
+                () => {
+                    Axios.delete(url); 
+                }
+            }>Delete</button>
         </div>
     )
 

@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <Form />
       <div>
-      {cards.length ? cards.map((card, index) => <Card key={index} title={card?.title} author= {card?.author} genre= {card.genre}/>) : ""}
+      {cards.length ? cards.map((card, index) => <Card key={index} id={card?._id} title={card?.title} author= {card?.author} genre= {card.genre} read={card?.read}/>) : ""}
       </div>
       
       
