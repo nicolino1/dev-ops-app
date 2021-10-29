@@ -7,15 +7,17 @@ const Form = () => {
     const [author, setAuthor] = useState("");
     const [genre, setGenre] = useState("");
 
-    const submitForm = (e) => {
-        e.preventDefault();
-        console.log(title);
-        (title?.lenght && author?.lenght && genre?.lenght) && 
-            axios.post("localhost:4000/api/books", {title: title, author: author, genre: genre})
-            .then((res) => console.log(res))
-            .catch(error => {
-                console.log(error);
-              });
+    const submitForm = async (e) => {
+       // e.preventDefault();
+        console.log(title)
+        if (title && author && genre) {
+          axios.post("http://localhost:4000/api/books", {title: title.toString(), author: author.toString(), genre: genre.toString()})
+          .then((res) => console.log(res))
+          .catch(error => {
+              console.log(error);
+            });
+        }
+
     }
         
 

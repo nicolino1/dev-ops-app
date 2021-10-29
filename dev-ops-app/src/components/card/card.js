@@ -2,7 +2,7 @@ import React from 'react';
 import './card.scss';
 
 const Card = (props) => {
-    const  {title, description} = props;
+    const  {title, author, genre} = props;
 
     return (
         <div className="card">
@@ -11,7 +11,8 @@ const Card = (props) => {
                 alt="Avatar"/>
             <div>
                 <h4>{title}</h4>
-                <p>{description}</p>
+                <p>{author}</p>
+                <p>{genre}</p>
             </div>
         </div>
     )

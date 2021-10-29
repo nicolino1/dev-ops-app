@@ -6,11 +6,11 @@ import Form from './components/form/form';
 import axios from 'axios';
 
 function App() {
-  const [cards, setCards] = useState([{title: "carta", description: "hola"}]);
+  const [cards, setCards] = useState([]);
   
-  useEffect(async () => {
-    axios.get('localhost:4000/api/books')
-    .then((res) => setCards(res))
+  useEffect( () => {
+     axios.get("http://localhost:4000/api/books")
+    .then((res) => {setCards(res.data); console.log(res.data)})
     .catch(error => {
       console.log("hola", error);
     });
@@ -19,7 +19,10 @@ function App() {
   return (
     <div className="App">
       <Form />
-      {cards.map((card, index) => <Card key={index} title={card?.title} description= {card?.description}/>)}
+      <div>
+      {cards.length ? cards.map((card, index) => <Card key={index} title={card?.title} author= {card?.author} genre= {card.genre}/>) : ""}
+      </div>
+      
       
     </div>
   );
